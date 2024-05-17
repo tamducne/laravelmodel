@@ -293,13 +293,18 @@ footer a {
         </div>
         
         <div class="form-container sign-in-container">
-            <form action="" method="">
+            <form action="{{ route('loginadminnew') }}" method="post">
                 @csrf
                 <h1>Sign in</h1>
                 <input type="email" name="email" placeholder="Email" />
                 <input type="password" name= "password" placeholder="Password" />
                 <a href="#">Forgot your password?</a>
                 <button>Sign In</button>
+                
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                
             </form>
         </div>
         <div class="overlay-container">

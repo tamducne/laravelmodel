@@ -7,6 +7,7 @@ use App\Models\AccountAdmin;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\WelcomeMail;
 use App\Models\Account;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class LoginsAdminController extends Controller
@@ -36,6 +37,32 @@ class LoginsAdminController extends Controller
 
     }
 
+    public function loginadmin(Request $request)
+    {
+        
+        $email =  $request->email;
+        $password = $request->password;
+        
+        
+        if (Auth::guard('account_admins')->attempt([
+            'email' => $email,
+            'password' => $password,
+        ])) {
+            // Đăng nhập thành công
+            // dd(Auth::guard('accounts')->user());
+            return redirect()->route('dashboardadmin');
+        } else {
+            // Đăng nhập thất bại
+            return back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ])->withInput();
+            }    
+    }
+    public function dashboardadmin(){
+      return view('account.dashboardadmin');
+    }
+
+    
 
     
 }

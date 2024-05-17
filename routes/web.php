@@ -27,9 +27,21 @@ Route::get('/loginadmin', [LoginsAdminController::class, 'index'])->name('logina
 
 Route::post('/registeradmin', [LoginsAdminController::class, 'create'])->name('registeradmin');
 
+
+
+Route::post('/loginadminnew', [LoginsAdminController::class,'loginadmin'])->name('loginadminnew');
+
+Route::get('/dashboardadmin', [LoginsAdminController::class,'dashboardadmin'])->name('dashboardadmin');
+
 Route::post('/loginuser', [LoginsController::class,'login'])->name('loginuser');
 
+
+
 Route::get('/dashboard', [LoginsController::class,'dashboard'])->name('dashboard');
+
+
+
+
     
 
 
