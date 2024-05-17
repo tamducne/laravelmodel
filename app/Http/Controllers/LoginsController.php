@@ -52,19 +52,23 @@ class LoginsController extends Controller
         
         $email =  $request->email;
         $password = $request->password;
-
+        
+        
         if (Auth::guard('accounts')->attempt([
             'email' => $email,
             'password' => $password,
         ])) {
             // Đăng nhập thành công
-            dd(Auth::guard('accounts')->user());
-            return redirect()->intended('account-dashboard');
+            // dd(Auth::guard('accounts')->user());
+            return redirect()->route('dashboard');
         } else {
             // Đăng nhập thất bại
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ])->withInput();
             }    
+    }
+    public function dashboard(){
+        return view('account.dashboard');
     }
 }

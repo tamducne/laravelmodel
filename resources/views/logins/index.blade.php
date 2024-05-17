@@ -297,9 +297,18 @@ footer a {
                 @csrf
                 <h1>Sign in</h1>
                 <input type="email" name="email" placeholder="Email" />
-                <input type="password" name= "password" placeholder="Password" />
+                <input type="password" name="password" placeholder="Password" />
                 <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                <button type="submit">Sign In</button>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </form>
         </div>
         
