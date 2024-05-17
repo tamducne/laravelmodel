@@ -29,7 +29,8 @@ Route::post('/registeradmin', [LoginsAdminController::class, 'create'])->name('r
 
 
 
-Route::post('/loginadminnew', [LoginsAdminController::class,'loginadmin'])->name('loginadminnew');
+Route::post('/loginadminnew', [LoginsAdminController::class,'loginadmin'])->name('loginadminnew')->middleware('checkAdminRole');
+
 
 Route::get('/dashboardadmin', [LoginsAdminController::class,'dashboardadmin'])->name('dashboardadmin');
 
@@ -38,6 +39,9 @@ Route::post('/loginuser', [LoginsController::class,'login'])->name('loginuser');
 
 
 Route::get('/dashboard', [LoginsController::class,'dashboard'])->name('dashboard');
+
+
+
 
 
 
