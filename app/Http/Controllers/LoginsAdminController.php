@@ -43,12 +43,10 @@ class LoginsAdminController extends Controller
         $email =  $request->email;
         $password = $request->password;
         
-        
         if (Auth::guard('account_admins')->attempt([
             'email' => $email,
             'password' => $password,
         ])) {
-            // Đăng nhập thành công
             // dd(Auth::guard('accounts')->user());
             return redirect()->route('dashboardadmin');
         } else {

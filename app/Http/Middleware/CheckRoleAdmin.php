@@ -21,8 +21,7 @@ class CheckRoleAdmin
         }
 
         // Kiểm tra xem người dùng có role là admin không
-        if (Auth::guard('account_admins')->user()->role === 1) {
-
+        if (Auth::guard('account_admins')->user()->role == 1) {
             return $next($request);
         }
 

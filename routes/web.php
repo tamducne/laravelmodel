@@ -20,25 +20,26 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [LoginsController::class, 'index'])->name('login');
-
-Route::post('/register', [LoginsController::class, 'create'])->name('register');
-
 Route::get('/loginadmin', [LoginsAdminController::class, 'index'])->name('loginadmin');
 
+Route::post('/register', [LoginsController::class, 'create'])->name('register');
 Route::post('/registeradmin', [LoginsAdminController::class, 'create'])->name('registeradmin');
 
-
-
-Route::post('/loginadminnew', [LoginsAdminController::class,'loginadmin'])->name('loginadminnew')->middleware('checkAdminRole');
-
-
-Route::get('/dashboardadmin', [LoginsAdminController::class,'dashboardadmin'])->name('dashboardadmin');
+Route::post('/loginadminnew', [LoginsAdminController::class,'loginadmin'])->name('loginadminnew');
+Route::get('/dashboardadmin', [LoginsAdminController::class,'dashboardadmin'])->name('dashboardadmin')->middleware('checkAdminRole');
 
 Route::post('/loginuser', [LoginsController::class,'login'])->name('loginuser');
-
-
-
 Route::get('/dashboard', [LoginsController::class,'dashboard'])->name('dashboard');
+
+
+
+// Route::get('/dashboardadmin/users', [AdminController::class, 'index']); // Xem danh sách
+// Route::get('/admin/users/{id}', [AdminController::class, 'show']); // Xem chi tiết
+// Route::post('/admin/users', [AdminController::class, 'store']); // Thêm mới
+// Route::put('/admin/users/{id}', [AdminController::class, 'update']); // Chỉnh sửa
+// Route::delete('/admin/users/{id}', [AdminController::class, 'destroy']); // Xóa
+
+
 
 
 
