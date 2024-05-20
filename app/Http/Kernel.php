@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -70,5 +71,6 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // Các middleware khác...
         'checkAdminRole' => \App\Http\Middleware\CheckRoleAdmin::class,
+        'checkAdminFull'=>\App\Http\Middleware\CheckAdminFull::class,
     ];
 }
